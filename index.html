@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Library</h1>
+            <button type="submit" class="btn btn-log" id="logBtn">Log in</button>
+        </div>
+    </header>
+
+
+    <main class="main-container">
+        <button type="submit" class="btn btn-add" id="addBtn">+ Add Book</button>
+        <div class="book-container" id="book-container">
+            
+            </div>
+        </div>
+    </main>
+    
+
+    <div class="overlay-box" id="overlay-box">
+        <form onsubmit="return false" id="add-book-form">
+            <h3 id="box-title">Add new book</h3>
+            <input type="text" class="text-box" id="title" name="title" required placeholder="Title" maxlength="100">
+            <input type="text" class="text-box" id="author" name="author" required placeholder="Author" maxlength="100">
+            <input type="number" class="text-box" id="pages" name="pages" required placeholder="Pages">
+            <div class="label-container">
+                <label id="read-text" for="is-read">Have you read it?</label>
+                <input type="checkbox" id="read" name="read">
+            </div>
+            <button id="submitBtn" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="overlay-screen"></div>
+    
+
+    <footer class="footer">Copyright @Kobahmi 2022</footer>
+</body>
+</html>
