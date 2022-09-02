@@ -35,7 +35,7 @@ formBox.addEventListener("submit", (e) => {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
-    createBookCard();
+    createBookCard(book);
 }
 
 function activate() {
@@ -57,8 +57,7 @@ function resetInput() {
 }
 
 
-function createBookCard() {
-    let newBook = myLibrary[myLibrary.length - 1];
+function createBookCard(newBook) {
 
     const bookCard = document.createElement("div")
     const newTitle = document.createElement("p")
@@ -97,8 +96,9 @@ function createBookCard() {
     readBtn.addEventListener("click", toggle)
     removeBtn.addEventListener("click", removeCard(removeBtn, newBook.title, newBook.author))
 
+    
     function toggle() {
-        if (readBtn.classList.contains("btn-read")) {
+        if (readBtn.classList.contains("btn-read")) {    //could also use if (newBook.read === true)
         readBtn.classList.remove("btn-read")
         readBtn.classList.add("btn-not-read")
         readBtn.textContent = "Not read"
@@ -111,18 +111,19 @@ function createBookCard() {
         readBtn.textContent = "Read"
         newBook.read = true}
     }
+    
+    function removeCard(btn, title, author) {
+        btn.addEventListener('click', () => {
+            let index = 0;
+            myLibrary.forEach((book) => {
+                if (book.title === title && book.author === author) {
+                    myLibrary.splice(index, 1);
+                }
+                index++;
+            })
+            let bookToBeRemoved = btn.parentElement.parentElement;
+            bookToBeRemoved.remove();
+        })
+    }
 }
 
-function removeCard(btn, title, author) {
-    btn.addEventListener('click', () => {
-        let index = 0;
-        myLibrary.forEach((book) => {
-            if (book.title === title && book.author === author) {
-                myLibrary.splice(index, 1);
-            }
-            index++;
-        })
-        let bookToBeRemoved = btn.parentElement.parentElement;
-        bookToBeRemoved.remove();
-    })
-}
